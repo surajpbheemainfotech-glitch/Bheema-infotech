@@ -74,8 +74,9 @@ const AnyService = () => {
               mt-6
               px-8
               py-3
-              bg-blue-600
-              hover:bg-green-700
+              bg-blue-950
+              hover:bg-orange-400
+              hover:text-blue-950
               text-white
               font-semibold
               rounded-2xl

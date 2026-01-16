@@ -49,8 +49,8 @@ const TechnicalStack = () => {
     <div className="bg-[#f1f8ff] text-gray-800 py-16">
       {/* Heading */}
       <section className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
-          Our <span className="text-blue-600">Technical Stacks</span>
+        <h1 className="text-4xl md:text-5xl font-bold text-blue-950 mb-4">
+          Our <span className="text-orange-400">Technical Stacks</span>
         </h1>
         <p className="text-gray-700 max-w-2xl mx-auto">
           We leverage cutting-edge technologies to deliver high-quality, scalable, and robust solutions for our clients.
@@ -97,7 +97,7 @@ const TechnicalStack = () => {
           Contact us today to learn how we can implement these technologies for your project.
         </p>
         <Link to="/contact"
-          className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition"
+          className="bg-blue-950 text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 hover:text-gray-900 transition"
         >
           Get In Touch
         </Link>

@@ -74,8 +74,9 @@ const ComplianceSutra = () => {
               mt-6
               px-8
               py-3
-              bg-cyan-600
-              hover:bg-cyan-700
+              bg-blue-950
+              hover:bg-orange-400
+             hover:text-blue-950
               text-white
               font-semibold
               rounded-xl

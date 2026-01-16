@@ -34,7 +34,7 @@ const Tripzy = () => {
             to="https://tripzy.bheemainfotech.in/"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-lg transition-all duration-300"
+            className="mt-6 inline-block px-8 py-3 bg-blue-950 hover:bg-orange-400 hover:text-blue-950 text-white font-semibold rounded-xl shadow-lg transition-all duration-300"
           >
             Visit Live Project
           </Link>

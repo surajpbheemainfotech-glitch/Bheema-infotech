@@ -193,7 +193,7 @@ const Contact = () => {
               className={`w-full py-3 rounded-md font-semibold transition ${
                 loading
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-blue-700 hover:bg-blue-800 text-white"
+                  : "bg-blue-950 hover:bg-yellow-400 hover:text-gray-900  text-white"
               }`}
             >
               {loading ? "Sending..." : "Send Message"}

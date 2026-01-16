@@ -27,11 +27,11 @@ const ThirdPage = () => {
       >
         <div className="max-w-[760px]">
 
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide text-teal-300">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide text-gray-100">
             Transform Your Business
           </h3>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2 leading-tight text-orange-400">
             With Powerful Websites
           </h1>
 
@@ -45,8 +45,8 @@ const ThirdPage = () => {
             className="
               inline-block
               mt-6
-              bg-red-600
-              hover:bg-red-700
+             bg-orange-600
+             hover:bg-yellow-500
               active:scale-95
               transition-all
               duration-200

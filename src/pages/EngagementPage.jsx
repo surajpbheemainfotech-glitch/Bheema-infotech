@@ -29,11 +29,11 @@ const Engagement = () => {
   return (
     <div className="bg-white text-gray-900">
       {/* Hero Section */}
-      <section className="py-20 text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6">
+      <section className="py-20 text-center bg-[#03303B] text-white px-6">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
             ENGAGEMENT MODELS FOR CUSTOM MADE SOLUTIONS{" "}
-            <span className="text-yellow-300">TO EASE YOUR WORK</span>
+            <span className="text-orange-400">TO EASE YOUR WORK</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl italic text-gray-100">
             We provide resources to clients on hire basis. Today the concept of
@@ -53,12 +53,12 @@ const Engagement = () => {
   className="relative group rounded-3xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 transform p-8 sm:p-10 flex flex-col items-center text-center min-h-[320px] w-full sm:w-[18rem] md:w-[22rem] overflow-hidden border border-gray-200"
 >
   {/* Sliding Overlay for top-to-bottom effect */}
-  <div className="absolute inset-0 bg-blue-600 -translate-y-full group-hover:translate-y-0 transition-all duration-500"></div>
+  <div className="absolute inset-0 bg-blue-950 -translate-y-full group-hover:translate-y-0 transition-all duration-500"></div>
 
   {/* Card Content */}
   <div className="relative z-10 flex flex-col items-center text-center">
     {/* Icon Box */}
-    <div className="w-24 h-8 mb-6 flex items-center justify-center rounded-2xl shadow-md bg-[#f0f7ff] group-hover:bg-blue-700 transition-all duration-300">
+    <div className="w-24 h-8 mb-6 flex items-center justify-center rounded-2xl shadow-md bg-[#f0f7ff] group-hover:bg-blue-950 transition-all duration-300">
       <img
         src={model.icon}
         alt={model.title}
@@ -79,7 +79,7 @@ const Engagement = () => {
     {/* Link */}
     <Link
       to="#contact"
-      className="mt-4 inline-block text-blue-600 font-semibold group-hover:text-yellow-300 transition duration-300"
+      className="mt-4 inline-block text-blue-950 font-semibold group-hover:text-orange-400 transition duration-300"
     >
       Learn More →
     </Link>
@@ -91,7 +91,7 @@ const Engagement = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 sm:py-20 text-center bg-[#e3efed] text-gray-900 px-6">
+      {/* <section className="py-16 sm:py-20 text-center bg-[#e3efed] text-gray-900 px-6">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6 leading-snug">
             Need Custom Engagement?
@@ -106,7 +106,7 @@ const Engagement = () => {
             Get In Touch
           </Link>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

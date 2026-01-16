@@ -34,7 +34,7 @@ const Housiey = () => {
             to="https://housiey.com/mumbai-real-estate"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-6 px-8 py-3 bg-blue-600 hover:bg-blue-700 
+            className="inline-block mt-6 px-8 py-3 bg-blue-950 hover:bg-orange-400 hover:text-blue-950
                        text-white font-semibold rounded-xl shadow-lg transition-all duration-300"
           >
             Visit Live Project

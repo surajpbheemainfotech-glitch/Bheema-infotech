@@ -5,6 +5,7 @@ import ThirdPage from "../pages/ThirdPage";
 
 const PortfolioPage = () => {
   const { pageId } = useParams();
+ 
 
   const renderPage = () => {
     switch (pageId) {
@@ -19,26 +20,28 @@ const PortfolioPage = () => {
     }
   };
 
-  return (
-    <div className="w-full min-h-screen flex flex-col justify-between p-0 m-0 overflow-hidden">
 
-      {/* ✅ Content always stays at top */}
-      <div className="flex-1 p-0 m-0">
+  return (
+    <div className="w-full min-h-screen relative">
+
+      {/* Content */}
+      <div className="pb-20">
         {renderPage()}
       </div>
 
-      {/* ✅ Pagination sticks at bottom */}
-      <div className="w-full flex justify-center gap-2 py-4 bg-white border-t">
-        <Link to="/portfolio" className="px-4 py-2 bg-gray-200 hover:bg-blue-500 hover:text-white rounded">
-          1
-        </Link>
-        <Link to="/portfolio/2" className="px-4 py-2 bg-gray-200 hover:bg-blue-500 hover:text-white rounded">
-          2
-        </Link>
-        <Link to="/portfolio/3" className="px-4 py-2 bg-gray-200 hover:bg-blue-500 hover:text-white rounded">
-          3
-        </Link>
-      </div>
+
+        <div className="fixed bottom-0 left-0 w-full flex justify-center gap-2 py-4 bg-white border-t z-50">
+          <Link to="/portfolio" className="px-4 py-2 bg-gray-200 hover:bg-blue-950 hover:text-white rounded">
+            1
+          </Link>
+          <Link to="/portfolio/2" className="px-4 py-2 bg-gray-200 hover:bg-blue-950 hover:text-white rounded">
+            2
+          </Link>
+          <Link to="/portfolio/3" className="px-4 py-2 bg-gray-200 hover:bg-blue-950 hover:text-white rounded">
+            3
+          </Link>
+        </div>
+    
     </div>
   );
 };

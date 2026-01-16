@@ -27,11 +27,11 @@ const OnePage = () => {
       >
         <div className="max-w-[720px]">
 
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide text-teal-300">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide text-gray-100">
             Have A Look At
           </h2>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2 leading-tight text-orange-400">
             Our Portfolio
           </h1>
 
@@ -45,8 +45,8 @@ const OnePage = () => {
             className="
               inline-block
               mt-6
-              bg-red-600
-              hover:bg-red-700
+              bg-orange-600
+              hover:bg-yellow-500
               active:scale-95
               transition-all
               duration-200

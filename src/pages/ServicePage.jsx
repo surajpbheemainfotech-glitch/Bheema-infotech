@@ -16,47 +16,36 @@ const Services = () => {
       title: "Web Development",
       icon: <FaCode />,
       description:
-        "Custom websites with responsive design, optimized performance, and modern technologies to bring your brand online.",
+        "Conversion-focused, scalable websites built with modern technologies, optimized for speed, security, and growth.",
     },
     {
       title: "Mobile App Development",
       icon: <MdOutlinePhoneIphone />,
       description:
-        "Native and cross-platform mobile apps that engage users, streamline workflows, and accelerate business growth.",
+        "Robust mobile applications for iOS and Android, designed for performance, usability, and long-term scalability.",
     },
     {
       title: "Digital Marketing",
       icon: <MdOutlineCampaign />,
       description:
-        "SEO, social media, and content marketing strategies that boost visibility and drive measurable results.",
+        "Result-driven digital marketing strategies focused on lead generation, visibility, and measurable ROI.",
     },
     {
-      title: "IT Staff Augmentation",
+      title: "SEO & Growth",
       icon: <FaUsersCog />,
       description:
-        "Scale up your tech expertise and enhance your team's capabilities with our robust IT Staff Augmentation services.",
+        "Search optimization solutions that help your business rank higher, attract qualified traffic, and convert users into customers.",
     },
-    {
-      title: "Enterprise Portal Development",
-      icon: <MdOutlineBusinessCenter />,
-      description:
-        "We offer enterprise solutions that fulfill all business needs with highly responsive and distinct features.",
-    },
-    {
-      title: "Quality Assurance & Testing",
-      icon: <MdOutlineVerified />,
-      description:
-        "Experienced development and testing team delivering quality-assured products, using A/B and multivariate testing to ensure smooth application performance.",
-    },
+   
   ];
 
   return (
-    <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+    <div className="bg-[#03303B] text-white">
       {/* Hero Section */}
       <section className="py-24 text-center">
         <div className="max-w-5xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
-            Our <span className="text-yellow-300">Services</span>
+            Our <span className="text-orange-400">Services</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-100 leading-relaxed">
             Delivering end-to-end IT solutions that empower your business to thrive in
@@ -74,7 +63,7 @@ const Services = () => {
   className="relative group bg-white p-8 rounded-3xl shadow-xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl"
 >
   {/* ✅ Overlay for TOP to BOTTOM effect */}
-  <div className="absolute inset-0 bg-gradient-to-b from-blue-400 to-blue-600 -translate-y-full group-hover:translate-y-0 transition-all duration-500"></div>
+  <div className="absolute inset-0 bg-blue-950 -translate-y-full group-hover:translate-y-0 transition-all duration-500"></div>
 
   <div className="relative z-10 flex flex-col items-center text-center min-h-[300px]">
     <div className="mb-6 text-6xl text-yellow-500 group-hover:text-white transition-all duration-500">
@@ -98,7 +87,7 @@ const Services = () => {
    
 
       {/* CTA Section */}
-      <section className="py-20 text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+      {/* <section className="py-20 text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
             Ready to Transform Your Digital Presence?
@@ -109,12 +98,12 @@ const Services = () => {
           </p>
           <Link
             to="/contact"
-            className="inline-block bg-yellow-400 text-gray-900 px-12 py-4 rounded-xl font-bold hover:bg-yellow-300 transition"
+            className="inline-block bg-orange-500 text-white px-12 py-4 rounded-xl font-bold  hover:bg-orange-600 transition"
           >
             Contact Us Today
           </Link>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
