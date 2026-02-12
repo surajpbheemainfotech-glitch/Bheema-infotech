@@ -1,5 +1,15 @@
 import React, { useState } from "react";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 12 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut", delay: i * 0.06 },
+  }),
+};
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +24,7 @@ const Contact = () => {
   const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData((p) => ({ ...p, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e) => {
@@ -41,176 +51,156 @@ const Contact = () => {
         setErrorMsg("Something went wrong! Please try again.");
       }
     } catch (error) {
-      console.error("Error!", error.message);
+      console.error("Error!", error);
       setErrorMsg("Server error! Please try again later.");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
-    <div className="bg-gray-50 text-gray-800 min-h-screen pt-8">
-      {/* Header Section */}
-      <section className="text-center mb-12 px-6 md:px-12 lg:px-24">
-        <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
-          Get in <span className="text-blue-600">Touch</span>
-        </h1>
-        <p className="text-gray-700 max-w-2xl mx-auto text-lg md:text-xl">
-          Have a project or question? We'd love to hear from you. Fill out the
-          form below and we will get back to you shortly.
-        </p>
-      </section>
-
-      {/* Contact Section */}
-      <section className="container mx-auto px-6 md:px-12 lg:px-24 grid md:grid-cols-2 gap-12">
-        
-        {/* Contact Info */}
-        <div className="space-y-6">
-
-          {/* Location */}
-          <div className="group bg-white p-8 rounded-xl shadow hover:shadow-xl transition duration-300 flex items-center gap-6">
-            <MdLocationOn className="text-blue-600 text-4xl transition duration-300 group-hover:text-blue-700" />
-            <div>
-              <h3 className="text-2xl font-semibold mb-2 text-blue-900">
-                Location
-              </h3>
-              <p className="text-gray-700">
-                <a
-                  href="https://maps.app.goo.gl/qkJq8S5hYUNYaCkg6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  302 A, Rajat Complex, 18, Kibe Compound, Madhumilan Square,
-                  In Front of Dawa Bazar, Indore, Madhya Pradesh 452001
-                </a>
-              </p>
-            </div>
-          </div>
-
-          {/* Email */}
-          <div className="group bg-white p-8 rounded-xl shadow hover:shadow-xl transition duration-300 flex items-center gap-6">
-            <MdEmail className="text-blue-600 text-4xl transition duration-300 group-hover:text-blue-700" />
-            <div>
-              <h3 className="text-2xl font-semibold mb-2 text-blue-900">
-                Email
-              </h3>
-              <a
-                href="mailto:bheemainfotech@gmail.com"
-                className="text-blue-600 hover:underline"
-              >
-                bheemainfotech@gmail.com
-              </a>
-            </div>
-          </div>
-
-          {/* Phone */}
-          <div className="group bg-white p-8 rounded-xl shadow hover:shadow-xl transition duration-300 flex items-center gap-6">
-            <MdPhone className="text-blue-600 text-4xl transition duration-300 group-hover:text-blue-700" />
-            <div>
-              <h3 className="text-2xl font-semibold mb-2 text-blue-900">
-                Phone
-              </h3>
-              <p className="text-gray-700">
-                +91-8770775732, +91-9770362377
-              </p>
-            </div>
-          </div>
+    <div className="min-h-screen bg-gradient-to-t from-orange-200 to-amber-50 text-slate-900">
+      {/* HEADER */}
+      <section className="relative overflow-hidden py-14 md:py-16">
+        <div className="pointer-events-none absolute inset-0 opacity-25">
+          <div className="absolute left-10 top-10 h-4 w-4 rounded-full bg-orange-600" />
+          <div className="absolute left-20 top-16 h-2.5 w-2.5 rounded-full bg-orange-600" />
+          <div className="absolute right-14 top-14 h-4 w-4 rounded-full bg-orange-600" />
+          <div className="absolute right-24 top-24 h-2.5 w-2.5 rounded-full bg-orange-600" />
         </div>
 
-        {/* Contact Form */}
-        <div className="bg-white p-8 rounded-xl shadow-xl">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            
-            {/* Name */}
-            <div>
-              <label className="block mb-2 font-medium text-gray-700">
-                Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full border border-gray-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          className="relative mx-auto max-w-7xl px-6 text-center md:px-12 lg:px-24"
+        >
+          <p className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/70 px-4 py-1 text-sm font-semibold text-orange-700 shadow-sm">
+            Contact <span className="h-2 w-2 rounded-full bg-orange-500" />
+          </p>
+
+          <h1 className="mt-4 text-4xl font-extrabold md:text-5xl">
+            Get in <span className="text-orange-500">Touch</span>
+          </h1>
+
+          <p className="mx-auto mt-3 max-w-2xl text-base text-slate-700 md:text-lg">
+            Have a project or question? Fill out the form and we’ll get back to
+            you shortly.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* CONTENT */}
+      <section className="mx-auto max-w-7xl px-6 pb-16 md:px-12 lg:px-24">
+        <div className="grid gap-8 lg:grid-cols-2">
+          {/* LEFT: MAP + CONTACT CARDS */}
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="space-y-6"
+          >
+            {/* Map */}
+            <motion.div variants={fadeUp} custom={0} className="overflow-hidden rounded-2xl border border-orange-200 bg-white shadow-lg">
+              <iframe
+                title="Bheema Infotech Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.4017998496734!2d75.87205247508219!3d22.713302379391717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x68ba25e128333e23%3A0x7545c88f9a3db7b7!2sBheema%20Infotech%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1770279777505!5m2!1sen!2sin"
+                className="h-[320px] w-full md:h-[380px]"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               />
-            </div>
+            </motion.div>
+        </motion.div>
 
-            {/* Email */}
-            <div>
-              <label className="block mb-2 font-medium text-gray-700">
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full border border-gray-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
+          {/* RIGHT: FORM */}
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="rounded-3xl border border-orange-200 bg-white/80 p-6 shadow-lg backdrop-blur-sm md:p-8"
+          >
+            <motion.h2 variants={fadeUp} custom={0} className="text-2xl font-extrabold text-slate-900">
+              Send us a message
+            </motion.h2>
+            <motion.p variants={fadeUp} custom={1} className="mt-2 text-sm text-slate-600">
+              Tell us about your project. We’ll reply within 24 hours.
+            </motion.p>
 
-            {/* Subject */}
-            <div>
-              <label className="block mb-2 font-medium text-gray-700">
-                Subject
-              </label>
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className="w-full border border-gray-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
+            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+              <motion.div variants={fadeUp} custom={2} className="grid gap-4 sm:grid-cols-2">
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Full Name"
+                  required
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-200"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Email Address"
+                  required
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-200"
+                />
+              </motion.div>
 
-            {/* Message */}
-            <div>
-              <label className="block mb-2 font-medium text-gray-700">
-                Message
-              </label>
-              <textarea
-                rows="5"
-                name="message"
-                placeholder="Your Message"
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full border border-gray-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              ></textarea>
-            </div>
+              <motion.div variants={fadeUp} custom={3}>
+                <input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="Subject"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-200"
+                />
+              </motion.div>
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={loading}
-              className={`w-full py-3 rounded-md font-semibold transition ${
-                loading
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-blue-950 hover:bg-yellow-400 hover:text-gray-900  text-white"
-              }`}
-            >
-              {loading ? "Sending..." : "Send Message"}
-            </button>
+              <motion.div variants={fadeUp} custom={4}>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Write your message..."
+                  rows={5}
+                  required
+                  className="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-200"
+                />
+              </motion.div>
 
-            {/* Success Error Message */}
-            {successMsg && (
-              <p className="mt-4 text-center text-green-600 font-medium">
-                {successMsg}
-              </p>
-            )}
-            {errorMsg && (
-              <p className="mt-4 text-center text-red-600 font-medium">
-                {errorMsg}
-              </p>
-            )}
-          </form>
+              {/* Messages */}
+              {(successMsg || errorMsg) && (
+                <div className="pt-1">
+                  {successMsg && (
+                    <p className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+                      {successMsg}
+                    </p>
+                  )}
+                  {errorMsg && (
+                    <p className="mt-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                      {errorMsg}
+                    </p>
+                  )}
+                </div>
+              )}
+
+              <motion.button
+                variants={fadeUp}
+                custom={5}
+                type="submit"
+                disabled={loading}
+                className="mt-2 inline-flex w-full items-center justify-center rounded-xl bg-orange-700 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-orange-500 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {loading ? "Sending..." : "Send Message"}
+              </motion.button>
+            </form>
+          </motion.div>
         </div>
       </section>
     </div>

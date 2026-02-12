@@ -1,25 +1,211 @@
+// ✅ WhyChooseUs.jsx (Framer Motion + your orange/amber theme)
+// - 4 bullet cards (7+ Years Experience, International Client Ready, Transparent Pricing, Dedicated Team)
+// - Clean glass cards + hover lift + subtle floating icon badges
+
 import React from "react";
+import { motion } from "framer-motion";
+import {
+  Briefcase,
+  Globe2,
+  BadgeCheck,
+  Users,
+  Sparkles,
+  ArrowRight,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+
+const container = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.05 },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 18 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: "easeOut" },
+  },
+};
+
+const float = (delay = 0) => ({
+  y: [0, -10, 0, 10, 0],
+  x: [0, 8, 0, -8, 0],
+  transition: {
+    duration: 8,
+    repeat: Infinity,
+    ease: "easeInOut",
+    delay,
+  },
+});
+
+const cards = [
+  {
+    title: "7+ Years Experience",
+    desc: "Hands-on delivery experience across websites, apps, and scalable systems.",
+    icon: <Briefcase className="h-5 w-5" />,
+    badge: <Sparkles className="h-4 w-4" />,
+  },
+  {
+    title: "International Client Ready",
+    desc: "Clear communication, professional process, and global delivery standards.",
+    icon: <Globe2 className="h-5 w-5" />,
+    badge: <BadgeCheck className="h-4 w-4" />,
+  },
+  {
+    title: "Transparent Pricing",
+    desc: "No hidden costs — clear scope, milestones, and predictable billing.",
+    icon: <BadgeCheck className="h-5 w-5" />,
+    badge: <Sparkles className="h-4 w-4" />,
+  },
+  {
+    title: "Dedicated Team",
+    desc: "Focused experts aligned to your goals — fast iterations and reliable support.",
+    icon: <Users className="h-5 w-5" />,
+    badge: <ArrowRight className="h-4 w-4" />,
+  },
+];
 
 const WhyUs = () => {
-  const accordions = [
-    { title: "Who We Are", content: "Bheema Infotech is an IT Firm located in Central India..." },
-    { title: "What We Provide", content: "Best Web and Mobile Solutions for startups and enterprises..." },
-    { title: "Our Vision", content: "Complete IT Solutions for advanced technologies and automation." },
-  ];
-
   return (
-    <section id="why-us" className="py-16 bg-gray-50">
-      <div className="container mx-auto flex flex-col lg:flex-row gap-6">
-        <div className="lg:w-1/2 bg-cover bg-center rounded" style={{backgroundImage: "url('/assets/img/why-us.jpg')"}}></div>
-        <div className="lg:w-1/2 flex flex-col justify-center">
-          <h2 className="text-3xl font-bold mb-4">Why Choose Us</h2>
-          {accordions.map((acc, i) => (
-            <div key={i} className="mb-4 border-b pb-2">
-              <h4 className="font-bold cursor-pointer">{acc.title}</h4>
-              <p className="text-gray-600 mt-1">{acc.content}</p>
-            </div>
-          ))}
+    <section className="bg-[#fbfbfb] text-slate-900">
+      {/* header */}
+      <div className="relative overflow-hidden">
+
+
+        <div className="mx-auto max-w-6xl px-6 pt-14 pb-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: "easeOut" }}
+            className="max-w-7xl"
+          >
+            <p className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-sm font-semibold text-slate-700 shadow-sm border border-slate-200">
+              Why choose us
+              <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
+            </p>
+
+            <h1 className="mt-4 text-3xl md:text-4xl font-extrabold leading-tight">
+              We leverage cutting-edge technologies to deliver high-quality, <span className="text-orange-500">scalable,and robust solutions for our clients.</span>
+            </h1>
+
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.08 }}
+            className="mx-auto mt-3 max-w-2xl text-sm md:text-base text-slate-700/80"
+          >
+            We keep it simple: great work, clear communication, and results that
+            help your business grow.
+          </motion.p>
+
+          {/* badge row */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.16 }}
+            className="mt-6 inline-flex flex-wrap items-center justify-center gap-2"
+          >
+            {["Fast Delivery", "Clean UI", "SEO Ready", "Scalable Code"].map(
+              (t) => (
+                <span
+                  key={t}
+                  className="rounded-full border border-orange-300/70 bg-white/70 px-3 py-1 text-xs font-semibold text-slate-700"
+                >
+                  {t}
+                </span>
+              )
+            )}
+          </motion.div>
         </div>
+      </div>
+
+      {/* cards */}
+      <div className="mx-auto max-w-6xl px-6 py-14">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid gap-6 md:grid-cols-2"
+        >
+          {cards.map((c, i) => (
+            <motion.article
+              key={c.title}
+              variants={fadeUp}
+              className="group relative overflow-hidden rounded-3xl border border-orange-200 bg-white/80 p-6
+                         shadow-[0_14px_30px_rgba(0,0,0,0.07)] backdrop-blur transition
+                         hover:-translate-y-1 hover:shadow-[0_22px_48px_rgba(0,0,0,0.12)]"
+            >
+              {/* glow */}
+              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition">
+                <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-[#F6D76B]/30 blur-2xl" />
+              </div>
+
+              {/* floating mini badge */}
+              <motion.div
+                className="absolute right-5 top-5"
+                animate={float(0.2 + i * 0.15)}
+              >
+                <div className="grid h-10 w-10 place-items-center rounded-2xl border border-orange-200 bg-white shadow-sm">
+                  <span className="text-orange-600">{c.badge}</span>
+                </div>
+              </motion.div>
+
+              <div className="flex items-start gap-3 pr-12">
+                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F6D76B]/35 text-slate-900">
+                  <span className="text-orange-600">{c.icon}</span>
+                </div>
+
+                <div className="min-w-0">
+                  <h3 className="text-lg md:text-xl font-extrabold text-slate-800">
+                    {c.title}
+                  </h3>
+                  <p className="mt-1 text-sm leading-6 text-slate-600">
+                    {c.desc}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-5 flex items-center justify-between">
+                <span className="inline-flex items-center gap-2 text-xs font-semibold text-slate-600">
+                  <Sparkles className="h-4 w-4" />
+                  Trusted delivery
+                </span>
+
+                <span className="inline-flex items-center gap-2 rounded-2xl border border-orange-300 bg-white px-3 py-1
+                                 text-xs font-semibold text-slate-800 transition
+                                 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500">
+                  Learn More <ArrowRight className="h-4 w-4" />
+                </span>
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mt-12 text-center"
+        >
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-2xl border border-orange-500 bg-white px-6 py-3
+                       text-sm font-semibold text-slate-900 shadow-sm transition
+                       hover:bg-orange-500 hover:text-white hover:shadow-md"
+          >
+            Get Started <ArrowRight className="h-4 w-4" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,52 +1,53 @@
 import React from "react";
-import { BrowserRouter as Router , Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ServicePage from "./pages/ServicePage";
-import EngagementPage from "./pages/EngagementPage";
-import TechnicalPage from "./pages/TechnicalPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import ContactPage from "./pages/ContactPage";
 import BlogPage from "./pages/BlogPage";
-// import CareersPage from "./pages/CareersPage";
-// import ItPage from "./pages/ItPage";
-// import InternshipPage from "./pages/InternshipPage";
-// import NonItPage from "./pages/NonitPage";
-// import ApplyIt from "./pages/ApplyIt";
-// import ApplyNonIt from "./pages/ApplyNonIt";
-// import ApplyInternShip from "./pages/ApplyInternShip";
 import ScrollToTop from "./components/ScrollToTop";
 import Internship from "./pages/Internship";
-
+import WebsiteDev from "./pages/services-pages/WebsiteDev"
+import DigitalMarketing from "./pages/services-pages/DigitalMarketing"
+import AI from "./pages/services-pages/Al"
+import DataAnalytics from "./pages/services-pages/DataAnalytics"
+import CloudDevops from "./pages/services-pages/CloudDevops"
 function App() {
   return (
     <Router>
-      <ScrollToTop  />
-        <Navbar/>
-       <Routes>
-         <Route path="/"element={<Home />}/>
-         <Route path="/services"element={<ServicePage/>}/>
-         <Route path="/about"element={<AboutPage/>}/>
-         <Route path="/engagement"element={<EngagementPage/>}/>
-         <Route path="/technicalstack"element={<TechnicalPage/>}/>
-         <Route path="/portfolio"element={<PortfolioPage/>}/>
-         <Route path="/portfolio/:pageId"element={<PortfolioPage/>}/>
-         <Route path="/contact"element={<ContactPage/>}/>
-         <Route path="/blog"element={<BlogPage/>}/>
-         <Route path="/internship" element={<Internship />} />
-        {/* <Route path="/careers/:filter" element={<CareersPage />} />
-         <Route path="/it"element={<ItPage/>}/>
-         <Route path="/nonit"element={<NonItPage/>}/>
-         <Route path="/internship"element={<InternshipPage/>}/> */}
-         {/* <Route path="/apply/it" element={<ApplyIt />} />
-         <Route path="/apply/nonit" element={<ApplyNonIt />} />
-         <Route path="/apply/internship" element={<ApplyInternShip/>} /> */}
+      <ScrollToTop />
+      <Navbar />
+      <Routes>
 
-       </Routes>
-       <Footer/>
-       </Router>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/internship" element={<Internship />} />
+
+         //services
+
+        <Route path="/services" element={<ServicePage />} />
+        <Route path="/services/website-development" element={<WebsiteDev />} />
+        <Route path="/services/digital-marketing" element={<DigitalMarketing />} />
+        <Route path="/services/ai-automation" element={<AI />} />
+        <Route path="/services/data-analytics" element={<DataAnalytics />} />
+        <Route path="/services/cloud-devops" element={<CloudDevops />} />
+
+       //portfolio
+
+        <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/portfolio/page/:page" element={<PortfolioPage />} />
+
+
+
+
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 

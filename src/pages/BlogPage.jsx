@@ -1,114 +1,121 @@
 import React from "react";
-import Footer from "../components/Footer";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import posts from "../data/blogData";
+
+const wrap = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 18, scale: 0.98 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 const BlogPage = () => {
-  const posts = [
-    {
-      title: "Why Digital Transformation is Essential for Small Businesses in 2025",
-      img: "https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=2",
-      desc: "Technology is no longer optional. Automation, AI and modern IT unlock speed, scale, and better customer experience.",
-      tag: "Strategy",
-    },
-    {
-      title: "Top 5 Benefits of Custom Software Development",
-      img: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
-      desc: "Move beyond limits of off-the-shelf tools—own your roadmap, integrate faster, and scale with confidence.",
-      tag: "Engineering",
-    },
-    {
-      title: "How a Professional Website Builds Trust & Boosts Sales",
-      img: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
-      desc: "Your site is your digital office—design, performance and content directly impact credibility and conversion.",
-      tag: "Web",
-    },
-    {
-      title: "From Idea to MVP: A Practical Launch Checklist",
-      img: "https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg",
-      desc: "Scope ruthlessly, validate early, and instrument analytics from day one to ship smarter.",
-      tag: "Product",
-    },
-    {
-      title: "QA Best Practices: Ship Faster Without Breaking Things",
-      img: "https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg",
-      desc: "Automated tests, CI pipelines, and clear test ownership reduce cost of change and release risk.",
-      tag: "Quality",
-    },
-    {
-      title: "SEO Foundations for B2B Tech",
-      img: "https://images.pexels.com/photos/3184460/pexels-photo-3184460.jpeg",
-      desc: "Technical hygiene + helpful content + intent mapping = sustainable organic growth.",
-      tag: "Marketing",
-    },
-  ];
-
   return (
-    <div className="w-full flex flex-col min-h-screen">
-      {/* HERO SECTION */}
-      <section className="relative w-full min-h-[70vh] flex items-center justify-center">
+    <div className="w-full flex flex-col min-h-screen bg-gradient-to-t from-orange-200 to-amber-50">
+      {/* HERO */}
+      <section className="relative w-full min-h-[60vh] md:min-h-[72vh] flex items-center justify-center overflow-hidden">
+        {/* Background image */}
         <img
-          src="https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=2"
-          alt="Hero Banner"
+          src={posts[0].img}
+          alt="Blog Hero"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-blue-900/80"></div>
 
-        <div className="relative text-center text-white px-6 max-w-4xl">
-          <h2 className="text-xl uppercase tracking-wide text-yellow-400">
-            Welcome to Our Blog
-          </h2>
-          <h1 className="text-4xl md:text-6xl font-bold mt-2">
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/55" />
+
+        {/* Shapes */}
+        <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-orange-400/20 blur-3xl" />
+        <div className="absolute -bottom-28 -left-20 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl" />
+
+        {/* Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="relative text-center text-white px-6 max-w-4xl"
+        >
+          <p className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-1 text-sm font-semibold text-slate-100">
+            Welcome to Our Blog <span className="h-2 w-2 rounded-full bg-orange-400" />
+          </p>
+
+          <h1 className="mt-4 text-4xl md:text-6xl font-extrabold leading-tight">
             Explore Knowledge & Insights
           </h1>
-          <p className="mt-4 text-lg md:text-xl">
-            Stay updated with the latest updates, strategies and technology trends.
+
+          <p className="mt-4 text-lg md:text-xl text-orange-200">
+            Stay updated with latest strategies, tech trends, and growth playbooks.
           </p>
-        </div>
-
-        {/* Floating Card */}
-        <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[90%] md:w-[70%]">
-          <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-center">
-            <h2 className="text-3xl font-bold text-blue-900 mb-3">Our Blogs</h2>
-            <p className="text-gray-600">
-              Handpicked articles on digital transformation, software, web, and
-              business growth strategies.
-            </p>
-          </div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* BLOG CARDS */}
-      <section className="mt-32 max-w-7xl mx-auto px-6 flex-grow">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {posts.map((post, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden transition duration-500"
-            >
-              <div className="h-64 w-full overflow-hidden rounded-t-2xl">
-                <img
-                  src={post.img}
-                  alt={post.title}
-                  className="w-full h-full object-cover transform hover:scale-110 transition duration-500"
-                />
-              </div>
-              <div className="p-6">
-                <span className="text-sm font-medium text-blue-600 uppercase">
-                  {post.tag}
-                </span>
-                <h3 className="text-xl font-semibold text-blue-900 mb-2">
-                  {post.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{post.desc}</p>
-                <button className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-yellow-400 hover:text-blue-900 transition">
-                  Read More
-                </button>
-              </div>
-            </div>
-          ))}
+      {/* BLOG GRID */}
+      <section className="max-w-7xl mx-auto px-6 py-14 md:py-16 flex-grow">
+        <div className="bg-orange-100 rounded-2xl p-6 sm:p-10 md:p-12 shadow-sm border border-orange-200">
+          <motion.div
+            variants={wrap}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {posts.map((post, index) => (
+              <motion.article
+                key={index}
+                variants={item}
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 260, damping: 18 }}
+                className="
+                  group bg-white rounded-3xl overflow-hidden
+                  border border-slate-200
+                  shadow-[0_12px_35px_rgba(0,0,0,0.10)]
+                  hover:shadow-[0_18px_55px_rgba(0,0,0,0.18)]
+                  transition-all
+                "
+              >
+                {/* Image */}
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={post.img}
+                    alt={post.title}
+                    className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-90" />
+
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-white backdrop-blur-md border border-orange-400 text-orange-600 text-xs font-bold px-3 py-1 rounded-full">
+                      {post.tag}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-lg md:text-xl font-extrabold text-slate-900 leading-snug">
+                    {post.title}
+                  </h3>
+
+                  <p className="mt-3 text-slate-600 text-sm leading-6">
+                    {post.desc}
+                  </p>
+
+                  <button className="mt-5 inline-flex items-center gap-2 font-bold text-blue-700 hover:text-orange-500 transition">
+                    Read More <ArrowRight className="h-4 w-4" />
+                  </button>
+
+                  <div className="mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-orange-400 to-red-300" />
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
         </div>
       </section>
-
-     
     </div>
   );
 };

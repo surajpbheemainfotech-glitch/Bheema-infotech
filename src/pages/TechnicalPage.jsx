@@ -1,5 +1,5 @@
 import React from "react";
-
+import { motion } from "framer-motion";
 // === ICON IMPORTS ===
 import icon1 from "../assets/icons/amazon_web_services.png";
 import icon2 from "../assets/icons/android.png";
@@ -46,62 +46,95 @@ const secondRow = allStacks.slice(Math.ceil(allStacks.length / 2));
 
 const TechnicalStack = () => {
   return (
-    <div className="bg-[#f1f8ff] text-gray-800 py-16">
+    <div className=" text-gray-800 py-16">
       {/* Heading */}
       <section className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-blue-950 mb-4">
-          Our <span className="text-orange-400">Technical Stacks</span>
-        </h1>
-        <p className="text-gray-700 max-w-2xl mx-auto">
-          We leverage cutting-edge technologies to deliver high-quality, scalable, and robust solutions for our clients.
-        </p>
+              <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55, ease: "easeOut" }}
+                  className="max-w-7xl"
+                >
+                  <p className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-sm font-semibold text-slate-700 shadow-sm border border-slate-200">
+                    Our Technical Stacks
+                    <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
+                  </p>
+        
+                  <h1 className="mt-4 text-3xl md:text-4xl font-extrabold leading-tight">
+                    We leverage cutting-edge technologies to deliver high-quality, <span className="text-orange-500">scalable,and robust solutions for our clients.</span> 
+                  </h1>
+
+                </motion.div>
+ 
       </section>
 
-      {/* Marquee Section */}
-      <section className="overflow-hidden space-y-12">
-        {/* Row 1: Left → Right */}
-        <div className="relative">
-          <div className="flex animate-marquee-left whitespace-nowrap">
-            {firstRow.concat(firstRow).map((icon, index) => (
-              <img
-                key={`row1-${index}`}
-                src={icon}
-                alt=""
-                className="w-40 h-30 object-contain mx-6"
-              />
-            ))}
-          </div>
-        </div>
+  {/* Marquee Section (Fixed sizing + theme styling) */}
+<section className="space-y-10">
+  {/* Row 1 */}
+  <div className="relative overflow-hidden rounded-3xl border border-orange-200 bg-white/80 p-6 shadow-sm">
+    {/* soft glow */}
+    <div className="pointer-events-none absolute inset-0 opacity-60">
+      <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-orange-400/15 blur-2xl" />
+    </div>
 
-        {/* Row 2: Right → Left */}
-        <div className="relative">
-          <div className="flex animate-marquee-right whitespace-nowrap">
-            {secondRow.concat(secondRow).map((icon, index) => (
-              <img
-                key={`row2-${index}`}
-                src={icon}
-                alt=""
-                className="w-40 h-30 object-contain mx-6"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+    {/* fade edges */}
+    <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white/90 to-transparent" />
+    <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white/90 to-transparent" />
 
-      {/* CTA Section */}
-      <section className="bg-blue-50 py-16 text-center mt-16">
-        <h2 className="text-3xl font-bold text-blue-900 mb-4">
-          Want to Work With These Technologies?
-        </h2>
-        <p className="text-gray-700 mb-8">
-          Contact us today to learn how we can implement these technologies for your project.
-        </p>
-        <Link to="/contact"
-          className="bg-blue-950 text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 hover:text-gray-900 transition"
+    <div className="relative z-10 flex animate-marquee-left whitespace-nowrap items-center gap-6">
+      {firstRow.concat(firstRow).map((icon, index) => (
+        <div
+          key={`row1-${index}`}
+          className="shrink-0 min-w-[140px] h-[86px] md:min-w-[160px] md:h-[96px]
+                     rounded-2xl border border-orange-200/70 bg-white/70 backdrop-blur
+                     shadow-[0_10px_22px_rgba(0,0,0,0.06)]
+                     grid place-items-center transition
+                     hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(0,0,0,0.12)]"
         >
-          Get In Touch
-        </Link>
-      </section>
+          <img
+            src={icon}
+            alt=""
+            loading="lazy"
+            className="!h-[56px] md:!h-[62px] !w-auto object-contain"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Row 2 */}
+  <div className="relative overflow-hidden rounded-3xl border border-orange-200 bg-white/80 p-6 shadow-sm">
+    {/* soft glow */}
+    <div className="pointer-events-none absolute inset-0 opacity-60">
+      <div className="absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-[#F6D76B]/25 blur-2xl" />
+    </div>
+
+    {/* fade edges */}
+    <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white/90 to-transparent" />
+    <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white/90 to-transparent" />
+
+    <div className="relative z-10 flex animate-marquee-right whitespace-nowrap items-center gap-6">
+      {secondRow.concat(secondRow).map((icon, index) => (
+        <div
+          key={`row2-${index}`}
+          className="shrink-0 min-w-[140px] h-[86px] md:min-w-[160px] md:h-[96px]
+                     rounded-2xl border border-orange-200/70 bg-white/70 backdrop-blur
+                     shadow-[0_10px_22px_rgba(0,0,0,0.06)]
+                     grid place-items-center transition
+                     hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(0,0,0,0.12)]"
+        >
+          <img
+            src={icon}
+            alt=""
+            loading="lazy"
+            className="!h-[56px] md:!h-[62px] !w-auto object-contain"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
     </div>
   );
 };
