@@ -15,6 +15,8 @@ import DigitalMarketing from "./pages/services-pages/DigitalMarketing"
 import AI from "./pages/services-pages/Al"
 import DataAnalytics from "./pages/services-pages/DataAnalytics"
 import CloudDevops from "./pages/services-pages/CloudDevops"
+import NotFound from "./components/NotFound";
+import UnderProcess from "./components/UnderProcess";
 function App() {
   return (
     <Router>
@@ -42,7 +44,9 @@ function App() {
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/portfolio/page/:page" element={<PortfolioPage />} />
 
-
+        // not found
+        <Route path="/work-in-process" element={<UnderProcess/>} />
+        <Route path="*" element={<NotFound />} />
 
 
       </Routes>

@@ -1,5 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { CircleCheckBig } from "lucide-react";
+
+const MotionLink = motion(Link);
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -18,6 +22,7 @@ const stagger = {
 };
 
 const DigitalMarketing = () => {
+     const scheduleCallLink = "tel:8770775732";
   return (
     <div className="bg-slate-50">
 
@@ -44,25 +49,29 @@ const DigitalMarketing = () => {
             increase visibility, generate qualified leads, and maximize ROI.
           </motion.p>
 
-          <motion.div
+         <motion.div
             variants={fadeUp}
             className="mt-8 flex justify-center gap-4 flex-wrap"
+            custom={1}
+            to="/contact"
           >
-            <motion.button
+            <MotionLink
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-slate-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-orange-500 transition"
+              to="/contact"
+              className="bg-white text-orange-600 px-6 py-3 rounded-xl font-semibold hover:bg-orange-100 transition "
             >
               Request Consultation
-            </motion.button>
+            </MotionLink>
 
-            <motion.button
+            <motion.a
+              href={scheduleCallLink}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="border border-orange-500 text-orange-600 px-6 py-3 rounded-xl font-semibold hover:bg-orange-500 hover:text-white transition"
             >
               Talk to Our Expert
-            </motion.button>
+            </motion.a>
           </motion.div>
         </motion.div>
       </section>
@@ -79,7 +88,7 @@ const DigitalMarketing = () => {
           <h2 className="text-3xl font-bold text-slate-900">
             Data-Driven Marketing That Delivers Measurable Results
           </h2>
-          <p className="mt-4 text-slate-600 leading-relaxed">
+          <p className="mt-4 text-slate-600 text-lg leading-relaxed">
             At Bheema Infotech, we combine strategy, analytics, and creativity
             to help businesses grow online. Our digital marketing services focus
             on increasing brand visibility, driving targeted traffic, and converting
@@ -127,7 +136,7 @@ const DigitalMarketing = () => {
                 key={index}
                 variants={fadeUp}
                 whileHover={{ y: -8 }}
-                className="p-6 rounded-2xl border border-orange-100 shadow-sm hover:shadow-lg transition"
+                className="p-6 rounded-2xl border border-orange-300 shadow-sm hover:shadow-lg transition"
               >
                 <h3 className="font-semibold text-xl text-slate-900">
                   {item.title}
@@ -154,75 +163,23 @@ const DigitalMarketing = () => {
 
           <div className="grid md:grid-cols-2 gap-6 mt-10">
             <ul className="space-y-3 text-slate-700">
-              <li>✔ ROI-Focused Campaign Strategies</li>
-              <li>✔ Data-Driven Performance Tracking</li>
-              <li>✔ Industry-Specific Marketing Plans</li>
+              <li className="flex gap-2"><span className="text-orange-400"><CircleCheckBig/></span> ROI-Focused Campaign Strategies</li>
+              <li className="flex gap-2"><span className="text-orange-400"><CircleCheckBig/></span> Data-Driven Performance Tracking</li>
+              <li className="flex gap-2"><span className="text-orange-400"><CircleCheckBig/></span> Industry-Specific Marketing Plans</li>
             </ul>
 
             <ul className="space-y-3 text-slate-700">
-              <li>✔ Conversion Rate Optimization (CRO)</li>
-              <li>✔ Transparent Reporting & Analytics</li>
-              <li>✔ Continuous Campaign Optimization</li>
+              <li className="flex gap-2"><span className="text-orange-400"><CircleCheckBig/></span> Conversion Rate Optimization (CRO)</li>
+              <li className="flex gap-2"><span className="text-orange-400"><CircleCheckBig/></span> Transparent Reporting & Analytics</li>
+              <li className="flex gap-2"><span className="text-orange-400"><CircleCheckBig/></span> Continuous Campaign Optimization</li>
             </ul>
           </div>
         </motion.div>
       </section>
 
-      {/* INDUSTRIES */}
-      <section className="py-16 bg-white">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeUp}
-          className="max-w-6xl mx-auto px-6 text-center"
-        >
-          <h2 className="text-3xl font-bold text-slate-900">
-            Industries We Help Grow
-          </h2>
-          <p className="mt-6 text-slate-600 max-w-3xl mx-auto">
-            We provide digital marketing solutions for Healthcare, Real Estate,
-            E-commerce, Education, SaaS startups, and local businesses aiming
-            to expand their digital footprint.
-          </p>
-        </motion.div>
-      </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-center">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeUp}
-          className="max-w-4xl mx-auto px-6"
-        >
-          <h2 className="text-3xl font-bold">
-            Ready to Scale Your Business Online?
-          </h2>
-          <p className="mt-4">
-            Let’s create a powerful digital marketing strategy tailored to your goals.
-          </p>
 
-          <div className="mt-8 flex justify-center gap-4 flex-wrap">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-orange-600 px-6 py-3 rounded-xl font-semibold hover:bg-slate-100 transition"
-            >
-              Request Consultation
-            </motion.button>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="border border-white px-6 py-3 rounded-xl font-semibold hover:bg-white hover:text-orange-600 transition"
-            >
-              Talk to Our Expert
-            </motion.button>
-          </div>
-        </motion.div>
-      </section>
 
     </div>
   );

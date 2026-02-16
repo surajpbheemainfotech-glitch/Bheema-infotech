@@ -7,7 +7,7 @@ import Services from "../components/homePage/service";
 import TechnicalStack from "./TechnicalPage";
 import Contact from "../components/homePage/Contact";
 
-import homimg from "/logo.jpg";
+import homimg from "../assets/logos/logo.jpg";
 import WhyUs from "../components/WhyUs";
 import CaseStudiesPreview from "../components/CaseStudiesPreview";
 

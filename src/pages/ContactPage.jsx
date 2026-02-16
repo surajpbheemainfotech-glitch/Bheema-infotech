@@ -15,6 +15,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    mobile: "",
     subject: "",
     message: "",
   });
@@ -46,7 +47,7 @@ const Contact = () => {
 
       if (response.ok) {
         setSuccessMsg("Thank you! Your message has been submitted.");
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setFormData({ name: "", email: "", mobile: "", subject: "", message: "" });
       } else {
         setErrorMsg("Something went wrong! Please try again.");
       }
@@ -93,27 +94,30 @@ const Contact = () => {
 
       {/* CONTENT */}
       <section className="mx-auto max-w-7xl px-6 pb-16 md:px-12 lg:px-24">
-        <div className="grid gap-8 lg:grid-cols-2">
-          {/* LEFT: MAP + CONTACT CARDS */}
+        <div className="grid gap-8 lg:grid-cols-2 items-stretch">
+          {/* LEFT: MAP */}
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
-            className="space-y-6"
+            className="h-full"
           >
-            {/* Map */}
-            <motion.div variants={fadeUp} custom={0} className="overflow-hidden rounded-2xl border border-orange-200 bg-white shadow-lg">
+            <motion.div
+              variants={fadeUp}
+              custom={0}
+              className="overflow-hidden rounded-2xl border border-orange-200 bg-white shadow-lg h-full flex"
+            >
               <iframe
                 title="Bheema Infotech Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.4017998496734!2d75.87205247508219!3d22.713302379391717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x68ba25e128333e23%3A0x7545c88f9a3db7b7!2sBheema%20Infotech%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1770279777505!5m2!1sen!2sin"
-                className="h-[320px] w-full md:h-[380px]"
+                className="w-full h-full"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </motion.div>
-        </motion.div>
+          </motion.div>
 
           {/* RIGHT: FORM */}
           <motion.div
@@ -122,15 +126,29 @@ const Contact = () => {
             viewport={{ once: true, amount: 0.2 }}
             className="rounded-3xl border border-orange-200 bg-white/80 p-6 shadow-lg backdrop-blur-sm md:p-8"
           >
-            <motion.h2 variants={fadeUp} custom={0} className="text-2xl font-extrabold text-slate-900">
+            <motion.h2
+              variants={fadeUp}
+              custom={0}
+              className="text-2xl font-extrabold text-slate-900"
+            >
               Send us a message
             </motion.h2>
-            <motion.p variants={fadeUp} custom={1} className="mt-2 text-sm text-slate-600">
+
+            <motion.p
+              variants={fadeUp}
+              custom={1}
+              className="mt-2 text-sm text-slate-600"
+            >
               Tell us about your project. We’ll reply within 24 hours.
             </motion.p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-              <motion.div variants={fadeUp} custom={2} className="grid gap-4 sm:grid-cols-2">
+              {/* ✅ Name + Email */}
+              <motion.div
+                variants={fadeUp}
+                custom={2}
+                className="grid gap-4 sm:grid-cols-2"
+              >
                 <input
                   type="text"
                   name="name"
@@ -151,7 +169,24 @@ const Contact = () => {
                 />
               </motion.div>
 
+              {/* ✅ Mobile Number */}
               <motion.div variants={fadeUp} custom={3}>
+                <input
+                  type="tel"
+                  name="mobile"
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  placeholder="Mobile Number"
+                  required
+                  inputMode="numeric"
+                  pattern="[0-9]{10}"
+                  title="Enter 10 digit mobile number"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-200"
+                />
+              </motion.div>
+
+              {/* Subject */}
+              <motion.div variants={fadeUp} custom={4}>
                 <input
                   type="text"
                   name="subject"
@@ -162,7 +197,8 @@ const Contact = () => {
                 />
               </motion.div>
 
-              <motion.div variants={fadeUp} custom={4}>
+              {/* Message */}
+              <motion.div variants={fadeUp} custom={5}>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -174,7 +210,6 @@ const Contact = () => {
                 />
               </motion.div>
 
-              {/* Messages */}
               {(successMsg || errorMsg) && (
                 <div className="pt-1">
                   {successMsg && (
@@ -192,7 +227,7 @@ const Contact = () => {
 
               <motion.button
                 variants={fadeUp}
-                custom={5}
+                custom={6}
                 type="submit"
                 disabled={loading}
                 className="mt-2 inline-flex w-full items-center justify-center rounded-xl bg-orange-700 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-orange-500 disabled:cursor-not-allowed disabled:opacity-60"

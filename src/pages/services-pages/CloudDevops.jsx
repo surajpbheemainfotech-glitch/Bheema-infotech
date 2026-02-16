@@ -1,5 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+const MotionLink = motion(Link);
+import { CircleCheckBig  } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -16,6 +19,7 @@ const stagger = {
 };
 
 const CloudDevops = () => {
+   const scheduleCallLink = "tel:8770775732";
   return (
     <div className="bg-slate-50">
       {/* HERO SECTION */}
@@ -41,26 +45,30 @@ const CloudDevops = () => {
             to support modern digital businesses.
           </motion.p>
 
-          <motion.div
-            variants={fadeUp}
-            className="mt-8 flex justify-center gap-4 flex-wrap"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-slate-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-orange-500 transition"
+           <motion.div
+              variants={fadeUp}
+              className="mt-8 flex justify-center gap-4 flex-wrap"
+              custom={1}
+              to="/contact"
             >
-              Request Consultation
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="border border-orange-500 text-orange-600 px-6 py-3 rounded-xl font-semibold hover:bg-orange-500 hover:text-white transition"
-            >
-              Talk to Our Expert
-            </motion.button>
-          </motion.div>
+              <MotionLink
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                to="/contact"
+                className="bg-white text-orange-600 px-6 py-3 rounded-xl font-semibold hover:bg-orange-100 transition "
+              >
+                Request Consultation
+              </MotionLink>
+  
+              <motion.a
+                href={scheduleCallLink}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="border border-orange-500 text-orange-600 px-6 py-3 rounded-xl font-semibold hover:bg-orange-500 hover:text-white transition"
+              >
+                Talk to Our Expert
+              </motion.a>
+            </motion.div>
         </motion.div>
       </section>
 
@@ -76,7 +84,7 @@ const CloudDevops = () => {
           <h2 className="text-3xl font-bold text-slate-900">
             Build Reliable & Scalable Cloud Infrastructure
           </h2>
-          <p className="mt-4 text-slate-600 leading-relaxed">
+          <p className="mt-4 text-slate-600 text-lg leading-relaxed">
             We help businesses migrate, optimize, and manage their cloud
             environments efficiently. Our Cloud & DevOps services ensure faster
             deployments, improved security, reduced downtime, and enhanced
@@ -124,7 +132,7 @@ const CloudDevops = () => {
                 key={idx}
                 variants={fadeUp}
                 whileHover={{ y: -8 }}
-                className="p-6 rounded-2xl border border-orange-100 shadow-sm hover:shadow-lg transition"
+                className="p-6 rounded-2xl border border-orange-300 shadow-sm hover:shadow-lg transition"
               >
                 <h3 className="font-semibold text-xl text-slate-900">
                   {item.title}
@@ -151,75 +159,23 @@ const CloudDevops = () => {
 
           <div className="grid md:grid-cols-2 gap-6 mt-10">
             <ul className="space-y-3 text-slate-700">
-              <li>✔ Faster Deployment Cycles</li>
-              <li>✔ High Availability & Reliability</li>
-              <li>✔ Scalable Infrastructure</li>
+              <li className="flex gap-2"><span className="text-orange-400 "><CircleCheckBig/></span> Faster Deployment Cycles</li>
+              <li className="flex gap-2"><span className="text-orange-400 "><CircleCheckBig/></span> High Availability & Reliability</li>
+              <li className="flex gap-2"><span className="text-orange-400 "><CircleCheckBig/></span> Scalable Infrastructure</li>
             </ul>
 
             <ul className="space-y-3 text-slate-700">
-              <li>✔ Enhanced Security & Compliance</li>
-              <li>✔ Reduced Operational Costs</li>
-              <li>✔ Automated Workflows & Monitoring</li>
+              <li className="flex gap-2"><span className="text-orange-400 "><CircleCheckBig/></span> Enhanced Security & Compliance</li>
+              <li className="flex gap-2"><span className="text-orange-400 "><CircleCheckBig/></span> Reduced Operational Costs</li>
+              <li className="flex gap-2"><span className="text-orange-400 "><CircleCheckBig/></span> Automated Workflows & Monitoring</li>
             </ul>
           </div>
         </motion.div>
       </section>
 
-      {/* INDUSTRIES */}
-      <section className="py-16 bg-white">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeUp}
-          className="max-w-6xl mx-auto px-6 text-center"
-        >
-          <h2 className="text-3xl font-bold text-slate-900">
-            Industries We Support
-          </h2>
-          <p className="mt-6 text-slate-600 max-w-3xl mx-auto">
-            Our cloud and DevOps solutions are ideal for SaaS startups, E-commerce
-            platforms, Healthcare systems, FinTech applications, Education
-            platforms, and enterprise businesses seeking reliable infrastructure.
-          </p>
-        </motion.div>
-      </section>
+ 
 
-      {/* CTA SECTION */}
-      <section className="py-16 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-center">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeUp}
-          className="max-w-4xl mx-auto px-6"
-        >
-          <h2 className="text-3xl font-bold">
-            Ready to Modernize Your Infrastructure?
-          </h2>
-          <p className="mt-4">
-            Let’s design a secure, scalable, and automated cloud strategy for your
-            business.
-          </p>
 
-          <div className="mt-8 flex justify-center gap-4 flex-wrap">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-orange-600 px-6 py-3 rounded-xl font-semibold hover:bg-slate-100 transition"
-            >
-              Request Consultation
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="border border-white px-6 py-3 rounded-xl font-semibold hover:bg-white hover:text-orange-600 transition"
-            >
-              Talk to Our Expert
-            </motion.button>
-          </div>
-        </motion.div>
-      </section>
     </div>
   );
 };

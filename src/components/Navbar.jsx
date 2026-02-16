@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "/logo01.png";
+import logo from "../assets/logos/logo01.png";
 
 const navLinks = [
   { path: "/", label: "Home" },
@@ -34,10 +34,13 @@ const Navbar = () => {
   // ✅ For animated underline (desktop)
   const containerRef = useRef(null);
   const linkRefs = useRef(new Map());
-  const [underline, setUnderline] = useState({ left: 0, width: 0, visible: false });
+  const [underline, setUnderline] = useState({
+    left: 0,
+    width: 0,
+    visible: false,
+  });
 
   const activePath = useMemo(() => {
-    // choose active item (services included)
     const activeItem = navLinks.find((l) => isActive(l.path));
     return activeItem?.path || "";
   }, [location.pathname]);
@@ -57,7 +60,6 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    // move underline on route change
     updateUnderlineTo(activePath);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activePath]);
@@ -68,6 +70,23 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", onResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activePath]);
+
+  // ✅ Close services dropdown on outside click (desktop)
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest("#services-menu-wrap")) {
+        setServiceOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // ✅ Close mobile menu on route change (nice UX)
+  useEffect(() => {
+    setIsOpen(false);
+    setServiceOpen(false);
+  }, [location.pathname]);
 
   return (
     <nav
@@ -89,7 +108,6 @@ const Navbar = () => {
           ref={containerRef}
           className="hidden md:flex items-center gap-8 relative"
           onMouseLeave={() => {
-            // return underline to active item
             updateUnderlineTo(activePath);
           }}
         >
@@ -104,24 +122,22 @@ const Navbar = () => {
           />
 
           {navLinks.map((item) => {
-            // Services dropdown item
+            // ✅ Services dropdown (DESKTOP) — CLICK TO OPEN (NO HOVER OPEN)
             if (item.path === "/services") {
               return (
                 <div
                   key={item.path}
+                  id="services-menu-wrap"
                   className="relative"
-                  onMouseEnter={() => {
-                    setServiceOpen(true);
-                    updateUnderlineTo(item.path);
-                  }}
-                  onMouseLeave={() => setServiceOpen(false)}
+                  onMouseEnter={() => updateUnderlineTo(item.path)} // underline only
+                  onMouseLeave={() => updateUnderlineTo(activePath)} // underline back
                 >
-                  <Link
-                    to="/services"
+                  <button
+                    type="button"
                     ref={(el) => {
                       if (el) linkRefs.current.set(item.path, el);
                     }}
-                    onMouseEnter={() => updateUnderlineTo(item.path)}
+                    onClick={() => setServiceOpen((p) => !p)}
                     className={`
                       relative px-1 py-2 transition-all duration-300
                       ${isActive("/services")
@@ -130,15 +146,18 @@ const Navbar = () => {
                     `}
                   >
                     Services ▾
-                  </Link>
+                  </button>
 
                   {/* Dropdown */}
                   {serviceOpen && (
-                    <div className="absolute top-12 left-0 w-64 rounded-2xl bg-white/95 backdrop-blur-xl
-                                    border border-orange-100 shadow-[0_12px_40px_rgba(0,0,0,0.12)]
-                                    py-2 overflow-hidden">
+                    <div
+                      className="absolute top-12 left-0 w-64 rounded-2xl bg-white/95 backdrop-blur-xl
+                                 border border-orange-100 shadow-[0_12px_40px_rgba(0,0,0,0.12)]
+                                 py-2 overflow-hidden"
+                    >
                       <Link
                         to="/services"
+                        onClick={() => setServiceOpen(false)}
                         className="block px-4 py-2.5 text-sm font-semibold text-slate-700
                                    hover:bg-orange-50 hover:text-orange-600 transition"
                       >
@@ -151,6 +170,7 @@ const Navbar = () => {
                         <Link
                           key={s.path}
                           to={s.path}
+                          onClick={() => setServiceOpen(false)}
                           className="block px-4 py-2.5 text-sm text-slate-700
                                      hover:bg-orange-50 hover:text-orange-600 transition"
                         >
@@ -163,6 +183,7 @@ const Navbar = () => {
               );
             }
 
+            // ✅ Normal links
             return (
               <Link
                 key={item.path}

@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { PhoneCall, ArrowRight } from "lucide-react";
 
-const heroImg = "/homePage/about.avif";
+const heroImg = new URL("../../assets/logos/about.avif", import.meta.url).href;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },

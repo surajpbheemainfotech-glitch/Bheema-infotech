@@ -33,7 +33,7 @@ const projects = [
     ],
     "cta": {
       "label": "Explore Courses",
-      "url": "https://skilldarbar.com/"
+      "url": "https://skilldabaar.bheemainfotech.in/"
     },
     "image": {
       "importName": "skilldarbar",
@@ -58,7 +58,7 @@ const projects = [
     ],
     "cta": {
       "label": "Visit Live Project",
-      "url": "https://kunhare.com/"
+      "url": "https://rdkunhare.com/"
     },
     "image": {
       "importName": "kunhare",
@@ -66,32 +66,7 @@ const projects = [
       "alt": "Kunhare Builder Website Preview"
     }
   }
-  ,
-  {
-    "id": 3,
-    "component": "HealthCare Digital Expert",
-    "slug": "healthcare-digital-expert",
-    "category": "Healthcare / Digital Marketing",
-    "tagline": "Smart Digital Solutions for Doctors & Healthcare Professionals",
-    "title": "HealthCare Digital Expert – Digital Marketing for Medical Professionals",
-    "description": "HealthCare Digital Expert is a professional healthcare-focused digital marketing platform designed for doctors, clinics, and medical institutions. The website highlights customized website development, branding, and digital growth strategies tailored specifically for healthcare professionals to build trust, increase visibility, and generate quality patient leads.",
-    "highlights": [
-      "Healthcare-Focused Website Development",
-      "Medical SEO & Local Search Optimization",
-      "Patient Lead Generation Strategy",
-      "Branding & Online Reputation Management",
-      "Conversion-Optimized Landing Pages"
-    ],
-    "cta": {
-      "label": "Book Free Strategy Call",
-      "url": "https://healthcare-digital-expert-demo.com/"
-    },
-    "image": {
-      "importName": "healthcare",
-      "path": image3,
-      "alt": "Healthcare Digital Expert Website Preview"
-    }
-  }
+  
   ,
   {
     "id": 4,
@@ -110,7 +85,7 @@ const projects = [
     ],
     "cta": {
       "label": "Get Free Quote",
-      "url": "https://solartech-demo.com/"
+      "url": "https://bheemainfotech.in/work-in-process"
     },
     "image": {
       "importName": "solartech",
